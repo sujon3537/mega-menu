@@ -254,11 +254,19 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
-        <ul className="flex gap-x-2 font-medium text-2xl text-white capitalize">
-          <li>about us</li>
-          <li>contact</li>
-          <li>blog</li>
-          <li>collection</li>
+        <ul className="flex gap-x-6 font-medium text-2xl text-white capitalize">
+          <li>
+            <a href="#">about us</a>
+          </li>
+          <li>
+            <a href="#">contact</a>
+          </li>
+          <li>
+            <a href="#">blog</a>
+          </li>
+          <li>
+            <a href="#">collection</a>
+          </li>
         </ul>
       </div>
     </div>
