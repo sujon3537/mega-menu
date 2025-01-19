@@ -216,12 +216,12 @@ const Navbar = () => {
           </h2>
           {showCategory ? (
             <FaAngleUp
-              className="text-white text-2xl"
+              className="text-white text-2xl md:hidden"
               onClick={handleShowCategory}
             />
           ) : (
             <FaAngleDown
-              className="text-white text-2xl"
+              className="text-white text-2xl md"
               onClick={handleShowCategory}
             />
           )}
@@ -240,9 +240,9 @@ const Navbar = () => {
                   {item.submenu && <FaAngleRight className="text-xl" />}
                 </a>
                 <ul
-                  className={`absolute top-0 left-full bg-blue-100 ${
+                  className={`md:absolute md:top-0 md:left-full bg-blue-100 ${
                     item.submenu ? "w-64" : "w-0"
-                  } min-h-80 divide-y divide-blue-200 drop-shadow hidden group-hover/item:block`}
+                  } md:min-h-80 divide-y divide-blue-200 drop-shadow hidden group-hover/item:block`}
                 >
                   {item.submenu &&
                     item.submenu.map((subItem) => (
@@ -260,9 +260,9 @@ const Navbar = () => {
                           )}
                         </a>
                         <ul
-                          className={`absolute top-0 left-full bg-blue-100 ${
+                          className={`md:absolute md:top-0 md:left-full bg-blue-100 ${
                             subItem.submenu ? "w-80" : "w-0"
-                          } min-h-80 divide-y divide-blue-200 drop-shadow hidden group-hover/subItem:block`}
+                          } md:min-h-80 divide-y divide-blue-200 drop-shadow hidden group-hover/subItem:block`}
                         >
                           {subItem.submenu &&
                             subItem.submenu.map((grandSubItem) => (
@@ -298,19 +298,29 @@ const Navbar = () => {
           } md:flex md:gap-x-4 font-medium text-2xl text-black md:text-white capitalize bg-blue-100 md:bg-transparent w-full divide-y md:divide-none divide-blue-200`}
         >
           <li className="px-3 py-1 md:p-0">
-            <a href="#">home</a>
+            <a href="#" className="block">
+              home
+            </a>
           </li>
           <li className="px-3 py-1 md:p-0">
-            <a href="#">about us</a>
+            <a href="#" className="block">
+              about us
+            </a>
           </li>
           <li className="px-3 py-1 md:p-0">
-            <a href="#">contact</a>
+            <a href="#" className="block">
+              contact
+            </a>
           </li>
           <li className="px-3 py-1 md:p-0">
-            <a href="#">blog</a>
+            <a href="#" className="block">
+              blog
+            </a>
           </li>
           <li className="px-3 py-1 md:p-0">
-            <a href="#">collection</a>
+            <a href="#" className="block">
+              collection
+            </a>
           </li>
         </ul>
       </div>
