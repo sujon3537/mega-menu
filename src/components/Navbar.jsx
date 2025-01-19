@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoMenu } from "react-icons/io5";
-import { FaAngleDown, FaAngleRight } from "react-icons/fa";
+import { FaAngleDown, FaAngleRight, FaAngleUp } from "react-icons/fa";
+import { RiMenu2Fill } from "react-icons/ri";
+import { RxCross2 } from "react-icons/rx";
 
 const Navbar = () => {
+  let [showMenu, setShowMenu] = useState(false);
+  let [showCategory, setShowCategory] = useState(false);
+
+  let handleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
+  let handleShowCategory = () => {
+    setShowCategory(!showCategory);
+  };
+
   let menuItem = [
     {
       id: 1,
@@ -195,14 +208,28 @@ const Navbar = () => {
   ];
   return (
     <div className="bg-blue-500 h-12 flex items-center">
-      <div className="container mx-auto flex items-center gap-x-6">
-        <div className="bg-blue-950 w-64 px-3 py-2 flex gap-x-2 justify-between items-center relative">
+      <div className="container mx-auto flex justify-between md:justify-normal items-center md:gap-x-6 relative">
+        <div className="bg-blue-950 min-w-64 px-3 py-2 flex gap-x-2 justify-between items-center relative">
           <h2 className="font-medium text-2xl text-white">
             <IoMenu className="text-white text-2xl inline-block mr-2" />
             Categories
           </h2>
-          <FaAngleDown className="text-white text-2xl" />
-          <ul className="absolute top-full left-0 bg-blue-100 w-64 divide-y divide-blue-200">
+          {showCategory ? (
+            <FaAngleUp
+              className="text-white text-2xl"
+              onClick={handleShowCategory}
+            />
+          ) : (
+            <FaAngleDown
+              className="text-white text-2xl"
+              onClick={handleShowCategory}
+            />
+          )}
+          <ul
+            className={`${
+              !showCategory && "hidden"
+            } md:block absolute top-full left-0 bg-blue-100 w-64 divide-y divide-blue-200`}
+          >
             {menuItem.map((item) => (
               <li
                 key={item.id}
@@ -254,17 +281,35 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
-        <ul className="flex gap-x-6 font-medium text-2xl text-white capitalize">
-          <li>
+        {showMenu ? (
+          <RxCross2
+            onClick={handleMenu}
+            className="md:hidden text-white text-2xl"
+          />
+        ) : (
+          <RiMenu2Fill
+            onClick={handleMenu}
+            className="md:hidden text-white text-2xl"
+          />
+        )}
+        <ul
+          className={`absolute md:static top-full left-1/3 ${
+            !showMenu && "hidden"
+          } md:flex md:gap-x-4 font-medium text-2xl text-black md:text-white capitalize bg-blue-100 md:bg-transparent w-full divide-y md:divide-none divide-blue-200`}
+        >
+          <li className="px-3 py-1 md:p-0">
+            <a href="#">home</a>
+          </li>
+          <li className="px-3 py-1 md:p-0">
             <a href="#">about us</a>
           </li>
-          <li>
+          <li className="px-3 py-1 md:p-0">
             <a href="#">contact</a>
           </li>
-          <li>
+          <li className="px-3 py-1 md:p-0">
             <a href="#">blog</a>
           </li>
-          <li>
+          <li className="px-3 py-1 md:p-0">
             <a href="#">collection</a>
           </li>
         </ul>
